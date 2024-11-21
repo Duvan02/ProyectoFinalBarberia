@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BarberApp.Movil.Views.HomePage"
+             Shell.NavBarIsVisible="False">
+    <VerticalStackLayout Padding="10">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="HOLA,"
+                   FontSize="23"
+                   FontAttributes="Bold"
+                   TextColor="White" />
+            <Label Text="{Binding Usuario}"
+                   FontAttributes="Bold"
+                   FontSize="23"
+                   HorizontalOptions="EndAndExpand"
+                   TextColor="White" />
+        </StackLayout>
+        <Label Text="Nuestros Servicios"
+               FontSize="17"
+               TextColor="{StaticResource GrayText}" />
+        <CollectionView ItemsSource="{Binding Servicios}"
+                        x:Name="lsServicios">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal"
+                                 HorizontalItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="{StaticResource GrayBorder}"
+                           Padding="10"
+                           WidthRequest="200"
+                           HorizontalOptions="Start"
+                           BackgroundColor="{StaticResource GrayFrame}">
+                        <StackLayout Spacing="10">
+                            <Frame Padding="0"
+                                   BackgroundColor="Transparent"
+                                   BorderColor="Transparent"
+                                   CornerRadius="15">
+                                <Image Source="{Binding Imagen}"
+                                       HeightRequest="220"
+                                       Aspect="AspectFill" />
+                            </Frame>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Descripcion}"
+                                       TextColor="White" />
+                                <Label Text="{Binding Precio, StringFormat='$ {0:F2}'}"
+                                       HorizontalOptions="EndAndExpand"
+                                       TextColor="{StaticResource Primary}" />
+                            </StackLayout>
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToServiceDetailCommand, Source={x:Reference lsServicios}}"
+                                                  CommandParameter="{Binding .}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="Ver más"
+                BackgroundColor="Transparent"
+                TextColor="{StaticResource Primary}"
+                FontAttributes="Bold"
+                Command="{Binding GoToServicesCommand}"
+                HorizontalOptions="End"/>
+        <Label Text="Nuestros Barberos"
+               FontSize="17"
+               Margin="0,15,0,0"
+               TextColor="{StaticResource GrayText}" />
+        <CollectionView ItemsSource="{Binding Barberos}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Horizontal"
+                                 HorizontalItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="{StaticResource GrayBorder}"
+                           Padding="10"
+                           HorizontalOptions="Start"
+                           BackgroundColor="{StaticResource GrayFrame}">
+                        <StackLayout Spacing="10">
+                            <Frame HorizontalOptions="Center"
+                                   WidthRequest="100"
+                                   HeightRequest="100"
+                                   Padding="0"
+                                   CornerRadius="50">
+                                <Image Source="{Binding Foto}"
+                                       Aspect="AspectFill" />
+                            </Frame>
+                            <Label Text="{Binding Nombres}"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="White" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

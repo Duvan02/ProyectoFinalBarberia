@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BarberApp.Movil.Views.AccountPage"
+             Title="Mi cuenta">
+    <StackLayout Padding="10"
+                 Spacing="20">
+        <Frame HorizontalOptions="Center"
+               WidthRequest="150"
+               CornerRadius="100"
+               HeightRequest="150">
+            <Image Source="{Binding ImagenPerfil}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SelectImagenCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+        </Frame>
+        <Grid ColumnDefinitions="*,*"
+              RowDefinitions="auto,auto"
+              RowSpacing="15"
+              Margin="20,0">
+            <StackLayout>
+                <Label Text="Nombre"
+                       TextColor="White" />
+                <Frame BorderColor="{StaticResource GrayBorder}"
+                       BackgroundColor="{StaticResource GrayFrame}"
+                       Padding="5,0">
+                    <Entry Text="{Binding NombreUsuario}"
+                           IsEnabled="{Binding NombreEnabled}"
+                           TextColor="White" />
+                </Frame>
+            </StackLayout>
+            <Button Grid.Column="1"
+                    Text="&#xe3c9;"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    FontSize="22"
+                    Padding="0"
+                    MinimumHeightRequest="10"
+                    Command="{Binding HabilitarNombreCommand}"
+                    HorizontalOptions="End"
+                    FontFamily="MIR" />
+            <StackLayout Grid.Row="1">
+                <Label Text="Telefono"
+                       TextColor="White" />
+                <Frame BorderColor="{StaticResource GrayBorder}"
+                       BackgroundColor="{StaticResource GrayFrame}"
+                       Padding="5,0">
+                    <Entry Text="{Binding TelefonoUsuario}"
+                           IsEnabled="{Binding TelefonoEnabled}"
+                           TextColor="White" />
+                </Frame>
+            </StackLayout>
+            <Button Grid.Column="1"
+                    Grid.Row="1"
+                    Text="&#xe3c9;"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    FontSize="22"
+                    Padding="0"
+                    MinimumHeightRequest="10"
+                    Command="{Binding HabilitarTelefonoCommand}"
+                    HorizontalOptions="End"
+                    FontFamily="MIR" />
+        </Grid>
+        <Button Text="Guardar"
+                Command="{Binding ActualizarPerfilUsuarioCommand}"
+                VerticalOptions="EndAndExpand"
+                IsVisible="{Binding ExisteCambios}" />
+
+        <Button Text="Cerrar sesión"
+                Margin="0,15,0,0"
+            Command="{Binding CerrarSesionCommand}"
+        VerticalOptions="EndAndExpand" />
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BarberApp.Movil.Views.AddReservationPage"
+             Title="Reservar una cita">
+    <VerticalStackLayout Padding="10"
+                         Spacing="10">
+        <StackLayout>
+            <Label Text="Servicio"
+                   TextColor="{StaticResource GrayText}" />
+            <CollectionView ItemsSource="{Binding Servicios}"
+                            x:Name="lsServicios">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Horizontal"
+                                     HorizontalItemSpacing="5" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10"
+                               BackgroundColor="{StaticResource GrayFrame}"
+                               BorderColor="{StaticResource GrayBorder}">
+                            <StackLayout>
+                                <Label Text="{Binding Nombre}"
+                                       TextColor="White" />
+                                <Label Text="{Binding Precio, StringFormat='$ {0:F2}'}"
+                                       HorizontalOptions="End"
+                                       TextColor="White"
+                                       FontAttributes="Bold" />
+                            </StackLayout>
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame"
+                                             Binding="{Binding IsSelected}"
+                                             Value="True">
+                                    <Setter Property="BorderColor"
+                                            Value="{StaticResource Primary}" />
+                                </DataTrigger>
+                            </Frame.Triggers>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.SelectServiceCommand, Source={x:Reference lsServicios}}"
+                                                      CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        <Grid ColumnDefinitions="*,*"
+              ColumnSpacing="8">
+            <StackLayout>
+                <Label Text="Fecha"
+                       TextColor="{StaticResource GrayText}" />
+                <Frame BorderColor="{StaticResource GrayBorder}"
+                       BackgroundColor="{StaticResource GrayFrame}"
+                       Padding="5,0">
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="5">
+                        <Label Text="&#xebcc;"
+                               Style="{StaticResource MaterialIcon}" />
+                        <DatePicker TextColor="White"
+                                    Date="{Binding FechaReserva}"
+                                    DateSelected="DatePicker_DateSelected">
+                            <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
+                        </DatePicker>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <StackLayout Grid.Column="1">
+                <Label Text="Hora"
+                       TextColor="{StaticResource GrayText}" />
+                <Frame BorderColor="{StaticResource GrayBorder}"
+                       BackgroundColor="{StaticResource GrayFrame}"
+                       Padding="5,0">
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="5">
+                        <Label Text="&#xe8b5;"
+                               Style="{StaticResource MaterialIcon}" />
+                        <TimePicker TextColor="White"
+                                    Time="{Binding HoraReserva}"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </Grid>
+        <StackLayout>
+            <Label Text="Barberos disponibles"
+                   TextColor="{StaticResource GrayText}" />
+            <CollectionView ItemsSource="{Binding Barberos}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     VerticalItemSpacing="5" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="{StaticResource GrayBorder}"
+                               Grid.Column="1"
+                               BackgroundColor="{StaticResource GrayFrame}"
+                               Padding="10">
+                            <StackLayout Orientation="Horizontal"
+                                         Spacing="10">
+                                <Frame CornerRadius="30"
+                                       Padding="0"
+                                       HeightRequest="55"
+                                       WidthRequest="55"
+                                       BorderColor="{StaticResource GrayBorder}">
+                                    <Image Source="{Binding Foto}"
+                                           Aspect="AspectFill" />
+                                </Frame>
+                                <Label Text="{Binding Nombres}"
+                                       TextColor="White"
+                                       VerticalOptions="Center" />
+                            </StackLayout>
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame"
+                                             Binding="{Binding IsSelected}"
+                                             Value="True">
+                                    <Setter Property="BorderColor"
+                                            Value="{StaticResource Primary}" />
+                                </DataTrigger>
+                            </Frame.Triggers>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.SelectBarberoCommand, Source={x:Reference lsServicios}}"
+                                                      CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        <Button Text="RESERVAR"
+                Command="{Binding SaveReservaCommand}" />
+    </VerticalStackLayout>
+</ContentPage>

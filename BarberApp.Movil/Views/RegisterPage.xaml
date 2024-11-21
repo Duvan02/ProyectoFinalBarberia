@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BarberApp.Movil.Views.RegisterPage"
+             Shell.NavBarIsVisible="False">
+    <StackLayout>
+        <Image Source="barber"
+               HeightRequest="350"
+               Aspect="AspectFill" />
+        <StackLayout Padding="10"
+                     VerticalOptions="FillAndExpand">
+            <Label Text="Registrarse"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   FontSize="25"
+                   FontAttributes="Bold"
+                   Margin="0,10,0,20" />
+            <StackLayout Spacing="15">
+                <Frame BorderColor="{StaticResource GrayBorder}"
+                       BackgroundColor="{StaticResource GrayFrame}"
+                       Padding="5,0">
+                    <StackLayout Spacing="8"
+                                 Orientation="Horizontal">
+                        <Label Text="&#xe7fd;"
+                               Style="{StaticResource MaterialIcon}" />
+                        <Entry HorizontalOptions="FillAndExpand"
+                               Placeholder="Nombres"
+                               TextColor="White"
+                               Text="{Binding Name}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame BorderColor="{StaticResource GrayBorder}"
+                       BackgroundColor="{StaticResource GrayFrame}"
+                       Padding="5,0">
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="5">
+                        <Label Text="&#xe158;"
+                               Style="{StaticResource MaterialIcon}" />
+                        <Entry HorizontalOptions="FillAndExpand"
+                               Placeholder="Email"
+                               TextColor="White"
+                               Text="{Binding Email}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame BorderColor="{StaticResource GrayBorder}"
+                       BackgroundColor="{StaticResource GrayFrame}"
+                       Padding="5,0">
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="5">
+                        <Label Text="&#xe0b0;"
+                               Style="{StaticResource MaterialIcon}" />
+                        <Entry HorizontalOptions="FillAndExpand"
+                               Placeholder="Teléfono"
+                               TextColor="White"
+                               Keyboard="Numeric"
+                               Text="{Binding Telefono}"/>
+                    </StackLayout>
+                </Frame>
+                <Frame BorderColor="{StaticResource GrayBorder}"
+                       BackgroundColor="{StaticResource GrayFrame}"
+                       Padding="5,0">
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="5">
+                        <Label Text="&#xe897;"
+                               Style="{StaticResource MaterialIcon}" />
+                        <Entry HorizontalOptions="FillAndExpand"
+                               Placeholder="Contraseña"
+                               TextColor="White"
+                               IsPassword="True"
+                               Text="{Binding Password}"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <StackLayout VerticalOptions="EndAndExpand"
+                         Margin="0,15,0,0"
+                         Spacing="10">
+                <Button Text="REGISTRARSE"
+                        Command="{Binding RegisterUserCommand}"
+                        Margin="0,0,0,10"
+                        CornerRadius="30" />
+                <Label Text="O"
+                       HorizontalOptions="Center"
+                       TextColor="{StaticResource GrayText}" />
+                <Button Text="Iniciar Sesión"
+                        Command="{Binding ReturnLoginCommand}"
+                        MinimumHeightRequest="10"
+                        Padding="5"
+                        TextColor="{StaticResource Primary}"
+                        BackgroundColor="Transparent" />
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

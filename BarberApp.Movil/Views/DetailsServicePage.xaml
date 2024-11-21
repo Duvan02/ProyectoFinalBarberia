@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BarberApp.Movil.Views.DetailsServicePage"
+             Title="Detalles de servicio">
+    <VerticalStackLayout Padding="15"
+                         Spacing="10">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding Servicio.Nombre}"
+                   FontSize="17"
+                   TextColor="White" />
+            <Label Text="{Binding Servicio.Precio, StringFormat='$ {0:F2}'}"
+                   HorizontalOptions="EndAndExpand"
+                   FontSize="20"
+                   TextColor="{StaticResource Primary}"/>
+        </StackLayout>
+        <Image Source="{Binding Servicio.Imagen}"
+               HeightRequest="400"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Tiempo duración"
+                   FontSize="16"
+                   TextColor="White" />
+            <Label Text="{Binding Servicio.TiempoDuracion, StringFormat='{0}min.'}"
+                   HorizontalOptions="EndAndExpand"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource GrayText}" />
+        </StackLayout>
+        <Label Text="{Binding Servicio.Descripcion}"
+               TextColor="{StaticResource GrayText}"/>
+        <Button Text="Reservar una cita"
+                Command="{Binding GoToReservaCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

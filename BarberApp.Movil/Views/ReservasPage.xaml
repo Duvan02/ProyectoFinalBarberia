@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BarberApp.Movil.Views.ReservasPage"
+             Title="Reservas">
+    <StackLayout Padding="10">
+        <RefreshView Command="{Binding RefreshCommand}"
+                     IsRefreshing="{Binding IsBusy}">
+            <Grid RowDefinitions="*"
+              VerticalOptions="FillAndExpand">
+                <CollectionView ItemsSource="{Binding Reservas}"
+                            VerticalOptions="FillAndExpand"
+                            x:Name="lsReservas">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                     VerticalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BorderColor="{StaticResource GrayBorder}"
+                               Padding="10"
+                               BackgroundColor="{StaticResource GrayFrame}">
+                                <StackLayout>
+                                    <Label Text="{Binding FechaCreacionReserva, StringFormat='Fecha registro: {0:dd-MM-yyyy hh:mm:ss}'}"
+                                       TextColor="White"/>
+                                    <Label Text="{Binding FechaReserva, StringFormat='Fecha reserva: {0:dd-MM-yyyy}'}"
+                                       TextColor="White"/>
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="Hora reserva: "
+                                           TextColor="White"/>
+                                        <Label Text="{Binding HoraInicio}"
+                                           TextColor="White"/>
+                                        <Label Text="-"
+                                           TextColor="White"/>
+                                        <Label Text="{Binding HoraFin}"
+                                           TextColor="White"/>
+                                    </HorizontalStackLayout>
+                                    <Label Text="{Binding Barbero, StringFormat='Barbero: {0}'}"
+                                       TextColor="White" />
+                                    <Grid ColumnDefinitions="*,2*"
+                                      Margin="0,10,0,0"
+                                      ColumnSpacing="5">
+                                        <Frame Padding="5"
+                                           BorderColor="Transparent"
+                                           VerticalOptions="Start">
+                                            <Label Text="{Binding Estado}"
+                                               HorizontalOptions="Center"
+                                               TextColor="White"
+                                               FontAttributes="Bold"/>
+                                            <Frame.Triggers>
+                                                <DataTrigger TargetType="Frame"
+                                                         Binding="{Binding Estado}"
+                                                         Value="PENDIENTE">
+                                                    <Setter Property="BackgroundColor"
+                                                        Value="Orange"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame"
+                                                         Binding="{Binding Estado}"
+                                                         Value="COMPLETADA">
+                                                    <Setter Property="BackgroundColor"
+                                                        Value="#54f33a" />
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame"
+                                                         Binding="{Binding Estado}"
+                                                         Value="CANCELADA">
+                                                    <Setter Property="BackgroundColor"
+                                                        Value="Red" />
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame"
+                                                         Binding="{Binding Estado}"
+                                                         Value="CONFIRMADA">
+                                                    <Setter Property="BackgroundColor"
+                                                        Value="#56b2ff" />
+                                                </DataTrigger>
+                                            </Frame.Triggers>
+                                        </Frame>
+                                        <StackLayout Grid.Column="1"
+                                                 HorizontalOptions="End"
+                                                 Orientation="Horizontal">
+                                            <Button FontFamily="MIR"
+                                                WidthRequest="40"
+                                                BackgroundColor="Red"
+                                                TextColor="White"
+                                                FontAttributes="Bold"
+                                                MinimumHeightRequest="5"
+                                                Command="{Binding Path=BindingContext.CancelarReservaCommand, Source={x:Reference lsReservas}}"
+                                                CommandParameter="{Binding .}"
+                                                FontSize="20"
+                                                Padding="10"
+                                                IsVisible="False"
+                                                VerticalOptions="Start"
+                                                Text="&#xe5cd;">
+                                                <Button.Triggers>
+                                                    <DataTrigger TargetType="Button"
+                                                             Binding="{Binding Estado}"
+                                                             Value="PENDIENTE">
+                                                        <Setter Property="IsVisible"
+                                                            Value="True"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="Button"
+                                                             Binding="{Binding Estado}"
+                                                             Value="CONFIRMADA">
+                                                        <Setter Property="IsVisible"
+                                                            Value="True" />
+                                                    </DataTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button HorizontalOptions="EndAndExpand"
+                    VerticalOptions="EndAndExpand"
+                    FontFamily="MIR"
+                    CornerRadius="50"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    Command="{Binding AgregarReservaCommand}"
+                    CommandParameter="CANCELAR"
+                    FontSize="35"
+                    Padding="10"
+                    Text="&#xe145;" />
+            </Grid>
+        </RefreshView>
+    </StackLayout>
+</ContentPage>

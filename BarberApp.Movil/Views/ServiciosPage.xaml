@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BarberApp.Movil.Views.ServiciosPage"
+             Title="Servicios">
+    <StackLayout Padding="10">
+        <RefreshView Command="{Binding RefreshCommand}"
+                     IsRefreshing="{Binding IsBusy}">
+            <CollectionView ItemsSource="{Binding Servicios}"
+                        VerticalOptions="FillAndExpand"
+                        x:Name="lsServicios">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                 Span="2"
+                                 HorizontalItemSpacing="10"
+                                 VerticalItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="{StaticResource GrayBorder}"
+                           Padding="10"
+                           BackgroundColor="{StaticResource GrayFrame}">
+                            <StackLayout Spacing="10">
+                                <Frame Padding="0"
+                                   BackgroundColor="Transparent"
+                                   BorderColor="Transparent"
+                                   CornerRadius="15">
+                                    <Image Source="{Binding Imagen}"
+                                       HeightRequest="200"
+                                       Aspect="AspectFill" />
+                                </Frame>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Descripcion}"
+                                       TextColor="White" />
+                                    <Label Text="{Binding Precio, StringFormat='$ {0:F2}'}"
+                                       HorizontalOptions="EndAndExpand"
+                                       TextColor="{StaticResource Primary}" />
+                                </StackLayout>
+                            </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToServiceDetailCommand, Source={x:Reference lsServicios}}"
+                                                  CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </StackLayout>
+</ContentPage>
