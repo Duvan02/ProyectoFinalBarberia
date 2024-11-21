@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barberos</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-nav__list">
+            <li>
+                <a href="reservas.html" class="sidebar-nav__link">
+                    <span class="material-icons">event</span> Reservas
+                </a>
+            </li>
+            <li>
+                <a href="barberos.html" class="sidebar-nav__link active">
+                    <span class="material-icons">content_cut</span> Barberos
+                </a>
+            </li>
+            <li>
+                <a href="servicios.html" class="sidebar-nav__link">
+                    <span class="material-icons">list_alt</span> Servicios
+                </a>
+            </li>
+            <li>
+                <a href="usuarios.html" class="sidebar-nav__link">
+                    <span class="material-icons">people</span> Administradores
+                </a>
+            </li>
+            
+            <li>
+                <a href="reportes.html" class="sidebar-nav__link">
+                    <span class="material-icons">bar_chart</span> Reportes
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main class="main-content">
+        <div class="table-container">
+            <div class="table-header">
+                <h2 class="table-title">Lista de Barberos</h2>
+                <button class="btn btn--primary" id="btn-nuevo">
+                    <span class="material-icons">add</span>
+                    Agregar barbero
+                </button>
+            </div>
+            <div class="search-container">
+                <div class="search-box">
+                    <span class="material-icons">search</span>
+                    <input type="text" placeholder="Buscar barbero..." class="search-input" id="search-text">
+                </div>
+                <button class="btn-search" id="btn-search">
+                    <span class="material-icons">search</span>
+                </button>
+            </div>
+            <table class="data-table" id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombres</th>
+                        <th>Foto</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <!-- Añade el modal al final del body -->
+    <div class="modal" id="modalForm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div style="display: flex; gap: .3rem;">
+                    <h3 id="title-form">Nuevo</h3>
+                    <h3>Barbero</h3>
+                </div>
+                <span class="material-icons modal-close btn-cancelar">close</span>
+            </div>
+            <form id="form" class="modal-form">
+                <div class="form-group">
+                    <label for="nombres">Nombres</label>
+                    <input type="text" id="nombres" name="nombres" required>
+                </div>
+                <div class="form-group">
+                    <label for="foto">Url Fotografía</label>
+                    <input type="url" id="foto" name="foto" required>
+                </div>
+                <div class="form-group">
+                    <label class="schedule-label">Horario de trabajo</label>
+                    <div class="schedule-container" id="scheduleContainer">
+                        <!-- Los días se agregarán aquí dinámicamente -->
+                    </div>
+                    <button type="button" class="btn btn--secondary btn-add-day" id="btnAddDay">
+                        <span class="material-icons">add</span>
+                        Agregar día
+                    </button>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn--secondary btn-cancelar">Cancelar</button>
+                <button type="submit" id="btn-guardar" class="btn btn--primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="app.js"></script>
+    <script src="barberos.js"></script>
+</body>
+</html>

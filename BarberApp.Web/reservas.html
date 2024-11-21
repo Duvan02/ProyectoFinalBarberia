@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-nav__list">
+            <li>
+                <a href="reservas.html" class="sidebar-nav__link active">
+                    <span class="material-icons">event</span> Reservas
+                </a>
+            </li>
+            <li>
+                <a href="barberos.html" class="sidebar-nav__link">
+                    <span class="material-icons">content_cut</span> Barberos
+                </a>
+            </li>
+            <li>
+                <a href="servicios.html" class="sidebar-nav__link">
+                    <span class="material-icons">list_alt</span> Servicios
+                </a>
+            </li>
+            <li>
+                <a href="usuarios.html" class="sidebar-nav__link">
+                    <span class="material-icons">people</span> Administradores
+                </a>
+            </li>
+            <li>
+                <a href="reportes.html" class="sidebar-nav__link">
+                    <span class="material-icons">bar_chart</span> Reportes
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main class="main-content">
+        <div class="table-container">
+            <div class="table-header">
+                <h2 class="table-title">Lista de Reservas</h2>
+            </div>
+            <div class="search-container">
+                <div class="filter-item">
+                    <span>Fecha</span>
+                    <input type="date" id="fecha-reserva">
+                </div>
+                <div class="filter-item">
+                    <span>Usuario</span>
+                    <select class="day-select" id="select-usuario">
+                        <option value="0">-- SELECCIONAR --</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <span>Servicio</span>
+                    <select class="day-select" id="select-servicio">
+                        <option value="0">-- SELECCIONAR --</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <span>Estado</span>
+                    <select class="day-select" id="select-estado">
+                        <option value="">-- SELECCIONAR --</option>
+                        <option value="PENDIENTE">PENDIENTE</option>
+                        <option value="CONFIRMADA">CONFIRMADA</option>
+                        <option value="COMPLETADA">COMPLETADA</option>
+                        <option value="CANCELADA">CANCELADA</option>
+                    </select>
+                </div>
+                <button class="btn-search" id="btn-search">
+                    <span class="material-icons">search</span>
+                </button>
+            </div>
+            <table class="data-table" id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Fecha Registro</th>
+                        <th>Fecha Reserva</th>
+                        <th>Hora Reserva</th>
+                        <th>Servicio</th>
+                        <th>Usuario</th>
+                        <th>Barbero</th>
+                        <th>Estado</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="app.js"></script>
+    <script src="reservas.js"></script>
+</body>
+</html>

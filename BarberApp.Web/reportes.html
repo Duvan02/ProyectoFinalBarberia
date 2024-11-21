@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-nav__list">
+            <li>
+                <a href="reservas.html" class="sidebar-nav__link">
+                    <span class="material-icons">event</span> Reservas
+                </a>
+            </li>
+            <li>
+                <a href="barberos.html" class="sidebar-nav__link">
+                    <span class="material-icons">content_cut</span> Barberos
+                </a>
+            </li>
+            <li>
+                <a href="servicios.html" class="sidebar-nav__link">
+                    <span class="material-icons">list_alt</span> Servicios
+                </a>
+            </li>
+            <li>
+                <a href="usuarios.html" class="sidebar-nav__link">
+                    <span class="material-icons">people</span> Administradores
+                </a>
+            </li>
+            <li>
+                <a href="reportes.html" class="sidebar-nav__link active">
+                    <span class="material-icons">bar_chart</span> Reportes
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main class="main-content">
+        <div class="table-container">
+            <div class="table-header">
+                <h2 class="table-title">Reportes</h2>
+            </div>
+            <div class="search-container">
+                <div class="filter-item">
+                    <span>Fecha Inicio</span>
+                    <input type="date" id="fecha-inicio">
+                </div>
+                <div class="filter-item">
+                    <span>Fecha Fin</span>
+                    <input type="date" id="fecha-fin">
+                </div>
+                <button class="btn-search" id="btn-search">
+                    <span class="material-icons">search</span>
+                </button>
+            </div>
+            <div>
+                <div class="container-report-generales">
+                    <div class="section-card-report">
+                        <span class="material-icons">attach_money</span>
+                        <span>Total Ingresos</span>
+                        <span class="item-value">20</span>
+                    </div>
+                    <div class="section-card-report reservas">
+                        <span class="material-icons">event</span>
+                        <span>Reservas registradas</span>
+                        <span class="item-value">20</span>
+                    </div>
+                    <div class="section-card-report services">
+                        <span class="material-icons">list_alt</span>
+                        <span>Servicios</span>
+                        <span class="item-value">20</span>
+                    </div>
+                    <div class="section-card-report users">
+                        <span class="material-icons">people</span>
+                        <span>Usuarios</span>
+                        <span class="item-value">20</span>
+                    </div>
+                    <div class="section-card-report completas">
+                        <span class="material-icons">event</span>
+                        <span>Reservas completadas</span>
+                        <span class="item-value">20</span>
+                    </div>
+                    <div class="section-card-report confirmadas">
+                        <span class="material-icons">event</span>
+                        <span>Reservas confirmadas</span>
+                        <span class="item-value">20</span>
+                    </div>
+                    <div class="section-card-report pendientes">
+                        <span class="material-icons">event</span>
+                        <span>Reservas pendientes</span>
+                        <span class="item-value">20</span>
+                    </div>
+                    <div class="section-card-report canceladas">
+                        <span class="material-icons">event</span>
+                        <span>Reservas canceladas</span>
+                        <span class="item-value">20</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="reportes.js"></script>
+</body>
+</html>
